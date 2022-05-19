@@ -23,6 +23,16 @@ describe('All opcodes:', () => {
         const result = new Ssd(Options).decompile()
         expect(result.assemblyProgram).toBe(code)
     })
+    it('should decompile: all api functions AT v2', () => {
+        const machineCode = '3500010300000035010103000000350201030000003503010300000035040104000000350501040000003506010400000035070104000000331001050000003311010500000033120105000000331301050000003414010300000004000000341501030000000400000033160105000000331701050000003318010500000033190105000000341a010300000004000000341b010300000004000000322001322101322201322301322401352501030000003526010400000035270103000000322801322901322a01322b01322c01322d01322e013240013241013242013243013244013245013246013247013200023501020300000032020235030203000000320402350502030000003500030300000035010303000000350203030000003203033304030500000035050303000000350603030000003507030300000035080303000000320903320a03320b0335000403000000350104030000003302040500000032030432040432050437060403000000050000000600000028'
+        const code = '^declare var00\n^declare var01\n^declare var02\n^declare var03\n^declare var04\n^declare var05\n^declare var06\n\nFUN @var03 get_A1\nFUN @var03 get_A2\nFUN @var03 get_A3\nFUN @var03 get_A4\nFUN @var04 get_B1\nFUN @var04 get_B2\nFUN @var04 get_B3\nFUN @var04 get_B4\nFUN set_A1 $var05\nFUN set_A2 $var05\nFUN set_A3 $var05\nFUN set_A4 $var05\nFUN set_A1_A2 $var03 $var04\nFUN set_A3_A4 $var03 $var04\nFUN set_B1 $var05\nFUN set_B2 $var05\nFUN set_B3 $var05\nFUN set_B4 $var05\nFUN set_B1_B2 $var03 $var04\nFUN set_B3_B4 $var03 $var04\nFUN clear_A\nFUN clear_B\nFUN clear_A_B\nFUN copy_A_From_B\nFUN copy_B_From_A\nFUN @var03 check_A_Is_Zero\nFUN @var04 check_B_Is_Zero\nFUN @var03 check_A_equals_B\nFUN swap_A_and_B\nFUN OR_A_with_B\nFUN OR_B_with_A\nFUN AND_A_with_B\nFUN AND_B_with_A\nFUN XOR_A_with_B\nFUN XOR_B_with_A\nFUN add_A_to_B\nFUN add_B_to_A\nFUN sub_A_from_B\nFUN sub_B_from_A\nFUN mul_A_by_B\nFUN mul_B_by_A\nFUN div_A_by_B\nFUN div_B_by_A\nFUN MD5_A_to_B\nFUN @var03 check_MD5_A_with_B\nFUN HASH160_A_to_B\nFUN @var03 check_HASH160_A_with_B\nFUN SHA256_A_to_B\nFUN @var03 check_SHA256_A_with_B\nFUN @var03 get_Block_Timestamp\nFUN @var03 get_Creation_Timestamp\nFUN @var03 get_Last_Block_Timestamp\nFUN put_Last_Block_Hash_In_A\nFUN A_to_Tx_after_Timestamp $var05\nFUN @var03 get_Type_for_Tx_in_A\nFUN @var03 get_Amount_for_Tx_in_A\nFUN @var03 get_Timestamp_for_Tx_in_A\nFUN @var03 get_Ticket_Id_for_Tx_in_A\nFUN message_from_Tx_in_A_to_B\nFUN B_to_Address_of_Tx_in_A\nFUN B_to_Address_of_Creator\nFUN @var03 get_Current_Balance\nFUN @var03 get_Previous_Balance\nFUN send_to_Address_in_B $var05\nFUN send_All_to_Address_in_B\nFUN send_Old_to_Address_in_B\nFUN send_A_to_Address_in_B\nFUN @var03 add_Minutes_to_Timestamp $var05 $var06\nFIN\n'
+        const Options = {
+            machineCode,
+            padInstruction: ''
+        }
+        const result = new Ssd(Options).decompile()
+        expect(result.assemblyProgram).toBe(code)
+    })
     it('should decompile: rare opCodes ', () => {
         const machineCode = '260000000027000000002b1600000004000000007f7f0500000000'
         const code = '^declare a\n\nFIZ $a\nSTZ $a\nERR :lab_6\nINC @a\nNOP\nNOP\nlab_6:\nDEC @a\n'
