@@ -9,17 +9,14 @@ npm install smartc-signum-decompiler
 
 # Usage
 Simple use
-```
+```js
 import Decomp from 'smartc-signum-decompiler';
-
-import Decomp from '../index'
 
 const machineCode = '28'
 const Options = {
     machineCode,
     variables: ['a', 'b', 'c', 'teste_d', 'r0'],
-    labels: [{ address: 253, label: '__fn_main' }],
-    padInstruction: ''
+    labels: [{ address: 0, label: '__fn_main' }]
 }
 const result = new Decomp(Options).decompile()
 // Use:
@@ -28,16 +25,16 @@ const result = new Decomp(Options).decompile()
 // result.labels
 ```
 
-Options properties are all optionals, but one of attachmentBytes, creationBytes or machineCode must be supplied.
+Options properties are all optionals, but at least one of attachmentBytes, creationBytes or machineCode must be supplied.
 ```js
 Options: {
-        attachmentBytes: string,
-        creationBytes: string,
-        machineCode: string,
-        variables: string[],
-        labels: Label[],
-        padInstruction: string
-    }
+    attachmentBytes: string,
+    creationBytes: string,
+    machineCode: string,
+    variables: string[],
+    labels: Label[],
+    padInstruction: string
+}
 ```
 
 # Browser usage
@@ -51,7 +48,7 @@ import Ssd from 'https://cdn.jsdelivr.net/npm/smartc-signum-decompiler/dist/inde
 
 ```
 
-A file tester.html is included in this repo. It is possible to test the decompiler with `npm run webpage` then opening the browser at http://localhost:7001
+A file tester.html is included in this repo. It is possible to test the decompiler with `npm run webpage` then pointing the browser at http://localhost:7001
 
 # Social media
 Join [SmartC Compiler](https://discord.gg/pQHnBRYE5c) server in Discord to stay tuned for news or ask questions.
