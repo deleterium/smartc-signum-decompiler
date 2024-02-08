@@ -194,6 +194,8 @@ export default class {
         { apiCode: 0x0404n, opCode: 0x32n, name: 'send_Old_to_Address_in_B' },
         { apiCode: 0x0405n, opCode: 0x32n, name: 'send_A_to_Address_in_B' },
         { apiCode: 0x0406n, opCode: 0x37n, name: 'add_Minutes_to_Timestamp' },
+        { apiCode: 0x0407n, opCode: 0x35n, name: 'Get_Map_Value_Keys_In_A' },
+        { apiCode: 0x0408n, opCode: 0x32n, name: 'Set_Map_Value_Keys_In_A' },
         { apiCode: 0x040dn, opCode: 0x35n, name: 'Get_Activation_Fee' },
         { apiCode: 0x040en, opCode: 0x32n, name: 'Put_Last_Block_GSig_In_A' }
     ]

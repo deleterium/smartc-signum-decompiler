@@ -110,6 +110,15 @@ describe('All opcodes:', () => {
         const result = new Ssd(Options).decompile()
         expect(result.assemblyProgram).toBe(code)
     })
+    it('should decompile: new api codes from SIP-38', () => {
+        const machineCode = '3208043507040000000028'
+        const code = '^declare var00\n\nFUN Set_Map_Value_Keys_In_A\nFUN @var00 Get_Map_Value_Keys_In_A\nFIN\n'
+        const Options = {
+            machineCode
+        }
+        const result = new Ssd(Options).decompile()
+        expect(result.assemblyProgram).toBe(code)
+    })
 })
 
 describe('Parse creation bytes:', () => {
