@@ -59,6 +59,7 @@ export default class {
         { opCode: 0x16n, argsType: 'II', template: 'MOD @%1 $%2' },
         { opCode: 0x17n, argsType: 'II', template: 'SHL @%1 $%2' },
         { opCode: 0x18n, argsType: 'II', template: 'SHR @%1 $%2' },
+        { opCode: 0x19n, argsType: 'II', template: 'POW @%1 $%2' },
         { opCode: 0x1an, argsType: 'J', template: 'JMP :%1' },
         { opCode: 0x1bn, argsType: 'IB', template: 'BZR $%1 :%2' },
         { opCode: 0x1en, argsType: 'IB', template: 'BNZ $%1 :%2' },
@@ -73,7 +74,9 @@ export default class {
         { opCode: 0x27n, argsType: 'I', template: 'STZ $%1' },
         { opCode: 0x28n, argsType: '', template: 'FIN' },
         { opCode: 0x29n, argsType: '', template: 'STP' },
+        { opCode: 0x2an, argsType: '', template: 'SLP' },
         { opCode: 0x2bn, argsType: 'J', template: 'ERR :%1' },
+        { opCode: 0x2cn, argsType: 'III', template: 'MDV @%1 $%2 $%3' },
         { opCode: 0x30n, argsType: '', template: 'PCS' },
         { opCode: 0x32n, argsType: 'F', template: 'FUN %1' },
         { opCode: 0x33n, argsType: 'FI', template: 'FUN %1 $%2' },
@@ -134,6 +137,7 @@ export default class {
         { apiCode: 0x0203n, opCode: 0x35n, name: 'check_HASH160_A_with_B' },
         { apiCode: 0x0204n, opCode: 0x32n, name: 'SHA256_A_to_B' },
         { apiCode: 0x0205n, opCode: 0x35n, name: 'check_SHA256_A_with_B' },
+        { apiCode: 0x0206n, opCode: 0x35n, name: 'Check_Sig_B_With_A' },
         { apiCode: 0x0300n, opCode: 0x35n, name: 'get_Block_Timestamp' },
         { apiCode: 0x0301n, opCode: 0x35n, name: 'get_Creation_Timestamp' },
         { apiCode: 0x0302n, opCode: 0x35n, name: 'get_Last_Block_Timestamp' },
@@ -146,13 +150,16 @@ export default class {
         { apiCode: 0x0309n, opCode: 0x32n, name: 'message_from_Tx_in_A_to_B' },
         { apiCode: 0x030an, opCode: 0x32n, name: 'B_to_Address_of_Tx_in_A' },
         { apiCode: 0x030bn, opCode: 0x32n, name: 'B_to_Address_of_Creator' },
+        { apiCode: 0x030cn, opCode: 0x35n, name: 'Get_Code_Hash_Id' },
         { apiCode: 0x0400n, opCode: 0x35n, name: 'get_Current_Balance' },
         { apiCode: 0x0401n, opCode: 0x35n, name: 'get_Previous_Balance' },
         { apiCode: 0x0402n, opCode: 0x33n, name: 'send_to_Address_in_B' },
         { apiCode: 0x0403n, opCode: 0x32n, name: 'send_All_to_Address_in_B' },
         { apiCode: 0x0404n, opCode: 0x32n, name: 'send_Old_to_Address_in_B' },
         { apiCode: 0x0405n, opCode: 0x32n, name: 'send_A_to_Address_in_B' },
-        { apiCode: 0x0406n, opCode: 0x37n, name: 'add_Minutes_to_Timestamp' }
+        { apiCode: 0x0406n, opCode: 0x37n, name: 'add_Minutes_to_Timestamp' },
+        { apiCode: 0x040dn, opCode: 0x35n, name: 'Get_Activation_Fee' },
+        { apiCode: 0x040en, opCode: 0x32n, name: 'Put_Last_Block_GSig_In_A' }
     ]
 
     private programName: string = ''

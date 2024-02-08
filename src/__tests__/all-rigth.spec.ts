@@ -90,6 +90,26 @@ describe('All opcodes:', () => {
         const result = new Ssd(Options).decompile()
         expect(result.assemblyProgram).toBe(code)
     })
+    it('should decompile: new opcodes from SIP-37', () => {
+        const machineCode = '0203000000040000001903000000050000002a0200000000030000002c000000000400000005000000020300000000000000250700000028'
+        const code = '^declare r0\n^declare r1\n^declare r2\n^declare a\n^declare b\n^declare c\n^declare d\n^declare e\n\nSET @a $b\nPOW @a $c\nSLP\nSET @r0 $a\nMDV @r0 $b $c\nSET @a $r0\nSLP $e\nFIN\n'
+        const Options = {
+            machineCode,
+            variables: ['r0', 'r1', 'r2', 'a', 'b', 'c', 'd', 'e']
+        }
+        const result = new Ssd(Options).decompile()
+        expect(result.assemblyProgram).toBe(code)
+    })
+    it('should decompile: new api codes from SIP-37', () => {
+        const machineCode = '35060200000000350c0300000000350d0400000000320e0428'
+        const code = '^declare v0\n\nFUN @v0 Check_Sig_B_With_A\nFUN @v0 Get_Code_Hash_Id\nFUN @v0 Get_Activation_Fee\nFUN Put_Last_Block_GSig_In_A\nFIN\n'
+        const Options = {
+            machineCode,
+            variables: ['v0']
+        }
+        const result = new Ssd(Options).decompile()
+        expect(result.assemblyProgram).toBe(code)
+    })
 })
 
 describe('Parse creation bytes:', () => {
