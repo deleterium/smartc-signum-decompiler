@@ -203,7 +203,8 @@ export default class {
         { apiCode: 0x040cn, opCode: 0x35n, name: 'Get_Asset_Holders_Count' },
         { apiCode: 0x040dn, opCode: 0x35n, name: 'Get_Activation_Fee' },
         { apiCode: 0x040en, opCode: 0x32n, name: 'Put_Last_Block_GSig_In_A' },
-        { apiCode: 0x040fn, opCode: 0x35n, name: 'Get_Asset_Circulating' }
+        { apiCode: 0x040fn, opCode: 0x35n, name: 'Get_Asset_Circulating' },
+        { apiCode: 0x0410n, opCode: 0x35n, name: 'Get_Account_Balance' }
     ]
 
     private programName: string = ''

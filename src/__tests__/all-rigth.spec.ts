@@ -129,6 +129,16 @@ describe('All opcodes:', () => {
         const result = new Ssd(Options).decompile()
         expect(result.assemblyProgram).toBe(code)
     })
+    it('should decompile: undocumented api GET_ACCOUNT_BALANCE', () => {
+        const machineCode = '3510040000000028'
+        const code = '^declare b\n\nFUN @b Get_Account_Balance\nFIN\n'
+        const Options = {
+            machineCode,
+            variables: ['b']
+        }
+        const result = new Ssd(Options).decompile()
+        expect(result.assemblyProgram).toBe(code)
+    })
 })
 
 describe('Parse creation bytes:', () => {
