@@ -119,6 +119,16 @@ describe('All opcodes:', () => {
         const result = new Ssd(Options).decompile()
         expect(result.assemblyProgram).toBe(code)
     })
+    it('should decompile: new api codes from SIP-39', () => {
+        const machineCode = '320d0335090401000000320a04320b04350c0400000000350f040000000028'
+        const code = '^declare value\n^declare assetId\n\nFUN B_To_Assets_Of_Tx_In_A\nFUN @assetId Issue_Asset\nFUN Mint_Asset\nFUN Distribute_To_Asset_Holders\nFUN @value Get_Asset_Holders_Count\nFUN @value Get_Asset_Circulating\nFIN\n'
+        const Options = {
+            machineCode,
+            variables: ['value', 'assetId']
+        }
+        const result = new Ssd(Options).decompile()
+        expect(result.assemblyProgram).toBe(code)
+    })
 })
 
 describe('Parse creation bytes:', () => {

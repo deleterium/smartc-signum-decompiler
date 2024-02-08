@@ -187,6 +187,7 @@ export default class {
         { apiCode: 0x030an, opCode: 0x32n, name: 'B_to_Address_of_Tx_in_A' },
         { apiCode: 0x030bn, opCode: 0x32n, name: 'B_to_Address_of_Creator' },
         { apiCode: 0x030cn, opCode: 0x35n, name: 'Get_Code_Hash_Id' },
+        { apiCode: 0x030dn, opCode: 0x32n, name: 'B_To_Assets_Of_Tx_In_A' },
         { apiCode: 0x0400n, opCode: 0x35n, name: 'get_Current_Balance' },
         { apiCode: 0x0401n, opCode: 0x35n, name: 'get_Previous_Balance' },
         { apiCode: 0x0402n, opCode: 0x33n, name: 'send_to_Address_in_B' },
@@ -196,8 +197,13 @@ export default class {
         { apiCode: 0x0406n, opCode: 0x37n, name: 'add_Minutes_to_Timestamp' },
         { apiCode: 0x0407n, opCode: 0x35n, name: 'Get_Map_Value_Keys_In_A' },
         { apiCode: 0x0408n, opCode: 0x32n, name: 'Set_Map_Value_Keys_In_A' },
+        { apiCode: 0x0409n, opCode: 0x35n, name: 'Issue_Asset' },
+        { apiCode: 0x040an, opCode: 0x32n, name: 'Mint_Asset' },
+        { apiCode: 0x040bn, opCode: 0x32n, name: 'Distribute_To_Asset_Holders' },
+        { apiCode: 0x040cn, opCode: 0x35n, name: 'Get_Asset_Holders_Count' },
         { apiCode: 0x040dn, opCode: 0x35n, name: 'Get_Activation_Fee' },
-        { apiCode: 0x040en, opCode: 0x32n, name: 'Put_Last_Block_GSig_In_A' }
+        { apiCode: 0x040en, opCode: 0x32n, name: 'Put_Last_Block_GSig_In_A' },
+        { apiCode: 0x040fn, opCode: 0x35n, name: 'Get_Asset_Circulating' }
     ]
 
     private programName: string = ''
