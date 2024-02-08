@@ -29,6 +29,42 @@ type returnObject = {
     labels: Label[]
 }
 
+type ConstructorOptions = {
+    attachmentBytes?: string,
+    creationBytes?: string,
+    machineCode?: string,
+    variables?: string[],
+    labels?: Label[],
+    padInstruction?: string
+}
+
+/**
+ * Decompile machine code back to assembly
+ *
+ * @example
+ *
+ * ```ts
+ * import decompiler from 'smartc-signum-decompiler'
+ *
+ * // One of attachmentBytes creationBytes or machineCode must be supplied. HexString expected.
+ * const opts = {
+ *    attachmentBytes?: string,
+ *    creationBytes?: string,
+ *    machineCode?: string,
+ *    variables?: string[],
+ *    labels?: Label[],
+ *    padInstruction?: string
+ * }
+ * const newDecompiler = new decompiler( OPTIONS )
+ *
+ * try {
+ *     decompiledCode = newDecompiler.decompile()
+ *     console.log(decompiledCode.assemblyProgram)
+ * } catch (errror) {
+ *     console.log(error.message)
+ * }
+ * ```
+ */
 export default class {
     private Constants = {
         maxVariables: 320
@@ -180,14 +216,13 @@ export default class {
     private userStackPages: number = -1
     private activationAmount: bigint = -1n
 
-    constructor (Options: {
-        attachmentBytes?: string,
-        creationBytes?: string,
-        machineCode?: string,
-        variables?: string[],
-        labels?: Label[],
-        padInstruction?: string
-    }) {
+    /**
+     * @param Options
+     * One of `attachmentBytes`, `creationBytes` or `machineCode` must be given.
+     * Providing the `variables` and `labels` will improve the readability of
+     * decompiled code.
+     */
+    constructor (Options: ConstructorOptions) {
         this.attachmentBytes = Options.attachmentBytes ?? ''
         this.creationBytes = Options.creationBytes ?? ''
         this.machineCode = Options.machineCode ?? ''
